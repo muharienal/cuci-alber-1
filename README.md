@@ -1,6 +1,6 @@
 # Cuci Alber
 
-## Cara Instalasi (persis seperti clone dari GitHub)
+## Cara Instalasi
 
 ### 1. Install dependency PHP
 
