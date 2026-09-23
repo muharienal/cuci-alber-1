@@ -1,0 +1,1493 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Sep 23, 2026 at 02:51 AM
+-- Server version: 10.4.32-MariaDB-log
+-- PHP Version: 8.3.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `cuci_alber`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `area_kerjas`
+--
+
+CREATE TABLE `area_kerjas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `zona_id` bigint(20) UNSIGNED NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `area_kerjas`
+--
+
+INSERT INTO `area_kerjas` (`id`, `zona_id`, `nama`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Gudang 1', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(2, 2, 'Gudang 2', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(3, 3, 'Gudang 3', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(4, 3, 'Pabrik IIB', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(5, 4, 'Gudang Pabrik III', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(6, 5, 'AMUREA II', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(7, 5, 'GMG', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(8, 2, 'Pabrik IIA', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(9, 6, 'Pabrik III A/B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(10, 1, 'ZA II', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(11, 5, 'Amurea IB', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(12, 6, 'Gd. Urea 20.000', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(13, 2, 'Gd. 25.000', '2026-09-08 07:45:35', '2026-09-08 07:45:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cache`
+--
+
+CREATE TABLE `cache` (
+  `key` varchar(255) NOT NULL,
+  `value` mediumtext NOT NULL,
+  `expiration` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cache_locks`
+--
+
+CREATE TABLE `cache_locks` (
+  `key` varchar(255) NOT NULL,
+  `owner` varchar(255) NOT NULL,
+  `expiration` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jenis_alats`
+--
+
+CREATE TABLE `jenis_alats` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `jenis_alats`
+--
+
+INSERT INTO `jenis_alats` (`id`, `nama`, `created_at`, `updated_at`) VALUES
+(1, 'Forklift', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(2, 'Wheel Loader', '2026-09-08 07:45:35', '2026-09-08 07:45:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `queue` varchar(255) NOT NULL,
+  `payload` longtext NOT NULL,
+  `attempts` tinyint(3) UNSIGNED NOT NULL,
+  `reserved_at` int(10) UNSIGNED DEFAULT NULL,
+  `available_at` int(10) UNSIGNED NOT NULL,
+  `created_at` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `job_batches`
+--
+
+CREATE TABLE `job_batches` (
+  `id` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `total_jobs` int(11) NOT NULL,
+  `pending_jobs` int(11) NOT NULL,
+  `failed_jobs` int(11) NOT NULL,
+  `failed_job_ids` longtext NOT NULL,
+  `options` mediumtext DEFAULT NULL,
+  `cancelled_at` int(11) DEFAULT NULL,
+  `created_at` int(11) NOT NULL,
+  `finished_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '0001_01_01_000000_create_users_table', 1),
+(2, '0001_01_01_000001_create_cache_table', 1),
+(3, '0001_01_01_000002_create_jobs_table', 1),
+(4, '2025_01_01_000001_create_zonas_table', 1),
+(5, '2025_01_01_000002_create_area_kerjas_table', 1),
+(6, '2025_01_01_000003_create_unit_kerjas_table', 1),
+(7, '2025_01_01_000004_create_jenis_alats_table', 1),
+(8, '2025_01_01_000005_create_operators_table', 1),
+(9, '2025_01_01_000006_create_unit_alats_table', 1),
+(10, '2025_01_01_000007_create_unit_operators_table', 1),
+(11, '2025_01_01_000008_create_pengawas_table', 1),
+(12, '2025_01_01_000009_create_submissions_table', 1),
+(13, '2025_01_01_000010_add_role_to_users_table', 1),
+(14, '2025_01_02_000001_drop_kebutuhan_alat_inti_from_unit_kerjas_table', 1),
+(15, '2025_01_02_000002_create_submission_photos_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `operators`
+--
+
+CREATE TABLE `operators` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `no_hp` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `operators`
+--
+
+INSERT INTO `operators` (`id`, `nama`, `no_hp`, `created_at`, `updated_at`) VALUES
+(1, 'MOH HATTA FARIH', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(2, 'RHESTA PRAYOGA U', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(3, 'AINUR ROFIK', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(4, 'BAMBANG SUGIANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(5, 'HAPI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(6, 'ABDUR ROHMAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(7, 'ACHMAD JAILANI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(8, 'SAIFUL ARIF', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(9, 'M.AFTON ILMAN HUDA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(10, 'SADELI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(11, 'TOMI ANDRIYANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(12, 'FATTAHUL AZIZ ZULFIKAR', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(13, 'RIDWAN EFENDI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(14, 'NUR AHMAD MUBAROK', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(15, 'SUBANDI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(16, 'AGENG EKO C', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(17, 'AHMAD SHOBARI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(18, 'SUROSO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(19, 'QHUSNUL QHULUQ', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(20, 'AHMAD MASRUCHIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(21, 'KIKI FIRMANSYAH', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(22, 'ASMUNI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(23, 'M. SAPUAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(24, 'ASHARI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(25, 'MUKHTAR SYAFI I', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(26, 'AGUS HARIYANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(27, 'ANIS DWI PRASETYO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(28, 'ROKHIM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(29, 'HAIKAL FERNANDO P', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(30, 'MULYONO TAUFIQ', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(31, 'MUH ZAKARIYA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(32, 'AKH.MUDZAKIR', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(33, 'MOCH ULIN NUHA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(34, 'IMAM AS\'ARI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(35, 'HARI SUBAGIO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(36, 'LADI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(37, 'MUHAMMAD SAFI\'I', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(38, 'ANANG PURNAWAN KUSUMA W', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(39, 'WAHYUDI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(40, 'M SYAIFUDIN GHUFRON NAFI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(41, 'AGUS SETYAWAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(42, 'MAHFUDIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(43, 'MUKHAMAD CHAMZAH', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(44, 'SUKIN WANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(45, 'TRI NOVI SETIONO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(46, 'ABDUL ROHIM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(47, 'HERU SUKMONO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(48, 'FACHRUL ANAM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(49, 'DIAN SLAMET BUDIANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(50, 'KHOIRUL FATIHIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(51, 'ROHANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(52, 'BENY DWI SAPUTRA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(53, 'ABDUL WARAS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(54, 'MACHMUD', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(55, 'PUJI ISTIADI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(56, 'MAGHFUR', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(57, 'MUHAMMAD FAUZI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(58, 'RUSIDI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(59, 'M. NAILUL AUTHOR', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(60, 'CHAMIM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(61, 'SUKI HARIYANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(62, 'MUHAMMAD ROBITH RICHABI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(63, 'JAUHARIL MAKNUN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(64, 'UMAR SAID', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(65, 'DEDI DWI ASTOMO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(66, 'DAHLAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(67, 'TOMI WIDI UTOMO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(68, 'SUDAR', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(69, 'ACH. MUSTAKIM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(70, 'ABDULLAH YAZID CHUSAIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(71, 'ROHMAD', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(72, 'MUHAMAD LAJIM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(73, 'JAINUL ABIDIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(74, 'SURYADI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(75, 'NURUL ADRIYANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(76, 'RUSLI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(77, 'HONI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(78, 'SHOMAD', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(79, 'ABDUL MALIK', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(80, 'RADIONO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(81, 'M. TAUFIK', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(82, 'MUHAMMAD YUNUS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(83, 'SUGIYO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(84, 'HERRY SUSANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(85, 'DHEDY R', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(86, 'NAWI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(87, 'MUDLOFIR', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(88, 'HASIM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(89, 'SYAFI\'I', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(90, 'SAMUKID', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(91, 'MUSLIH', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(92, 'AHMAD USMAN SAPUTRA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(93, 'SHODIK', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(94, 'A. ANDI ALFIANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(95, 'AMIN GHOZALI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(96, 'ABDUS SALAM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(97, 'ACH. BAJURI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(98, 'AHMAD ZAINUL ALAM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(99, 'FAIZZULHAQ MA\'ARIF', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(100, 'AKHMAD SADILI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(101, 'ARIS SUSANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(102, 'ASIFUDDIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(103, 'HARIANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(104, 'BAMBANG RUSANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(105, 'KHUSNUL TAUFIQ', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(106, 'BALIYAH', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(107, 'IRHAM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(108, 'MISBACHUL ACHYAR', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(109, 'LUKMAN KHAKIM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(110, 'SUKAIMIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(111, 'MUHAMMAD MUJIONO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(112, 'M. SYAUFIQ RIDWAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(113, 'MUKHAMMAD SLAMET', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(114, 'MOCHAMAD SA\'RONI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(115, 'MUHAMMAD SHUBEKHI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(116, 'MOH. ARIES RINALDI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(117, 'NUR HIDAYAT', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(118, 'YASMAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(119, 'SUNARDIONO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(120, 'ROBBAH MA\'SUM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(121, 'UBAIDILLAH', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(122, 'SUKERMAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(123, 'SYAIFUL ANWAR', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(124, 'AGUS EFENDI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(125, 'IMAM SAFI\'I', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(126, 'MUSLIKH', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(127, 'NUR HASIM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(128, 'ALI AFANDI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(129, 'SAIFUL WATHON', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(130, 'HARIONO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(131, 'MARWANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(132, 'BAHRUL ULUM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(133, 'INDRA SULISTIANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(134, 'MUHAMMAD AMIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(135, 'NURSAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(136, 'ANIB UBAIDILLAH', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(137, 'AGUS DWI HANDOKO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(138, 'SUKO PURWANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(139, 'HARI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(140, 'AHMAD JAYUS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(141, 'MAHMUD ZAENURI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(142, 'RINTON DISTORI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(143, 'ARIF MALIKI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(144, 'SIRILIUS DWI ARI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(145, 'MUKIM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(146, 'SUGITO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(147, 'NARTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(148, 'ANDRE SANDIJA PUTRA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(149, 'ARIF MUZAKKY', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(150, 'DIDIN ASI P', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(151, 'SUWARNO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(152, 'M. NUR CHOLIS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(153, 'NOR CHOLIS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(154, 'NUR HUDA WIJAYA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(155, 'EKO CAHYANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(156, 'PUJIONO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(157, 'SAMSUL ARIF', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(158, 'ARIS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(159, 'UGIK KRISTIAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(160, 'BAMBANG SUDIYANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(161, 'HERY S', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(162, 'MAT SUPI\'I', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(163, 'MARMO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(164, 'PURNOMO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(165, 'SUSANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(166, 'YASIR', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(167, 'MIFTAKUL ROZAK', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(168, 'HUDA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(169, 'MAS DARUL ILMI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(170, 'DEVANIARDIAS YUDHA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(171, 'FAUZI ILMI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(172, 'A YAZID', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(173, 'ALI MUDYAKIR', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(174, 'HANIF KUSWANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(175, 'GATOT', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(176, 'SUDARMANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(177, 'NAFIK', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(178, 'M MAULIDHUN NS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(179, 'YAHYA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(180, 'YUDI RIZKI P', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(181, 'M DAVID INDRA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(182, 'ARDIANSYAH', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(183, 'Z BATUBARA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(184, 'JEFFRI KURNIAWAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(185, 'M LUTFI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(186, 'DJAINURI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(187, 'M UMAMUDIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(188, 'M TAHFIAN HAMID', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(189, 'MARSUDI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(190, 'ANANG SULISTIONO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(191, 'MAGHFIRUL GHONI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(192, 'ARBAIN NAWAWI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(193, 'ZULKIPLI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(194, 'TAUFIK SALEH', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(195, 'M JAMIL', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(196, 'NURUL YAQIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(197, 'ACHMAD CHANIF S', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(198, 'SEPTIAN AGUS W', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(199, 'SUKUR', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(200, 'SLAMET WAHYUDI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(201, 'TAUFIK', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(202, 'M. PRIDANI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(203, 'MOHAMMAD BASORI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(204, 'YONGKI YOLANDA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(205, 'ENDIK FRADANA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(206, 'FAHMI MUZAKI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(207, 'M PRIDANI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(208, 'RUDI MULYADI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(209, 'ALI MASUD', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(210, 'AGUS J', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(211, 'MOCH USADANI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(212, 'AMININ', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(213, 'KHOIRON', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(214, 'M. ZAINUL', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(215, 'ANDINI WAHYU TIRTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(216, 'KHOIRUL', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(217, 'SULAIMAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(218, 'M. IZZANUDIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(219, 'M. BUDI ROHMAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(220, 'AS\'ARI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(221, 'SLAMET', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(222, 'IMAM QODIM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(223, 'SUPA\'AT', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(224, 'YOHANES UTOMO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(225, 'BANDI ALI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(226, 'AANK.K', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(227, 'ABD CHOLIK', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(228, 'MAKRUS ALI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(229, 'MAURI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(230, 'WINARTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(231, 'M. BURHANUDIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(232, 'ALI KHASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(233, 'HARIYANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(234, 'EDGAR N. T', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(235, 'M. SIHABUDIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(236, 'MOH. SYAIFUDIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(237, 'TIYAS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(238, 'ADAM YUDI P', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(239, 'EKO KURNIAWAN S', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(240, 'AHMAD ROSIDIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(241, 'M.NAFI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(242, 'P. DAVID YULANDA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(243, 'SUYONO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(244, 'ABD.SALAM FANANI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(245, 'ANGGA PRASTIAWAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(246, 'ASHAR', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(247, 'AINUL YAQIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(248, 'RAHMAD TAUFIK ZEEN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(249, 'MIFTAHUL HUDA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(250, 'M. BASORI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(251, 'AHMAD MUSYANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(252, 'SETYO NOEGROHO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(253, 'DEDY MISWIDYANTO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(254, 'ISMAIL', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(255, 'TARMUJI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(256, 'NURHADI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(257, 'SAPUAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(258, 'M. EKO NUR JAELANI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(259, 'ABDULLAH USMAN FARUQI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(260, 'MIRZA P', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(261, 'AS\'AD SAMSUL', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(262, 'ABD MUJIB', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(263, 'SAMSUL ANAM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(264, 'FASHIKIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(265, 'KHUSNAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(266, 'M hamdan', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(267, 'MAAD HAZBULLOH E', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(268, 'ARIS D W', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(269, 'SHOLIHAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(270, 'Ach. yunan u', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(271, 'A. JUNAEDI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(272, 'MISBACHUL MUNIR', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(273, 'ROFIK', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(274, 'MASHUDI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(275, 'A. RIFA\'I', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(276, 'ADI GUNAWAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(277, 'JODI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(278, 'MEI AGUNG', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(279, 'JAINUL H', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(280, 'CHOIRI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(281, 'MUTHAROSIDI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(282, 'JAMIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(283, 'M. SAMSUL ARIFIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(284, 'SHABIKIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(285, 'DENNY CAHYO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(286, 'M. Abdul Ghoniy', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(287, 'AHMAD MURZAKI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(288, 'KHOLIQIN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(289, 'MUH ABDUL MAJID', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(290, 'KHOZIM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(291, 'M. ISROQI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(292, 'WARTONO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(293, 'DANANG WAHYUDI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(294, 'GILANG', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(295, 'KHAFID', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(296, 'M. SHOLEH', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(297, 'SUUDI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(298, 'IHMALUL HUSAUNi', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(299, 'HANAFI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(300, 'A. MUKLIS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(301, 'AGUS DWI Y', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(302, 'SYAIFUL PRIO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(303, 'BAHRUL ANAM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(304, 'ABD. ASHAR MUKHLIS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(305, 'GURUH', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(306, 'RIFAI', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(307, 'M NIDHOM', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(308, 'MIJO', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_reset_tokens`
+--
+
+CREATE TABLE `password_reset_tokens` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengawas`
+--
+
+CREATE TABLE `pengawas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `wilayah` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pengawas`
+--
+
+INSERT INTO `pengawas` (`id`, `nama`, `wilayah`, `created_at`, `updated_at`) VALUES
+(1, 'Iin', 'I A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(2, 'Agus', 'I A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(3, 'Lugito', 'I A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(4, 'Yudha', 'I A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(5, 'Mat Yakin', 'I B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(6, 'Suyono Sby', 'I B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(7, 'Toha', 'I B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(8, 'Nairi', 'I B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(9, 'Janjang', 'II A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(10, 'Fatchur', 'II A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(11, 'Sumardiono', 'II A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(12, 'Suyono La', 'II A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(13, 'Aziz', 'II B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(14, 'Dwi Yasse', 'II B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(15, 'Fauzi', 'II B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(16, 'Aries', 'II B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(17, 'Masrur', 'III', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(18, 'Junaidi', 'III', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(19, 'Rudy', 'III', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(20, 'Machrus', 'III', '2026-09-08 07:45:35', '2026-09-08 07:45:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `id` varchar(255) NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `user_agent` text DEFAULT NULL,
+  `payload` longtext NOT NULL,
+  `last_activity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('bsbEkrRU46bjmwmPz6O4dLQnybGm16IGEnQQqw4W', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiMzVDdnBJbnE2dTJSSEVacTRMRFRTOHFWUWZydzRmN2xUUXZRQjhnMiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzg6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9hamF4L29wZXJhdG9ycy8xIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1788924642),
+('NJYGtQfZf6LzWT8nrdLZGQ2FgRrQf0AZI5aGNU9J', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiaW01akU3aXdyMHJPcTNndjN1MkJjNlpqQ2hBNnpJT1VXSDl3VmduOSI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozNzoiaHR0cDovL2xvY2FsaG9zdDo4MDAwL2FkbWluL2Rhc2hib2FyZCI7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM3OiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYWRtaW4vZGFzaGJvYXJkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1788918483),
+('U3cU4vaX5DJLQiGzyC9OfZiy72B6TBL85J8VWTg0', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiMEtaczFJeWtBR3lYTnVubkpOREVYWWw3VUtZOFFVSWFXajR2enkzbiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9hZG1pbi9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1789001319),
+('yPTNqzbhJgmLSqo6PvOO27KOwaULHC9ktX77V0mO', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZFBWd3NWRERqOUJ3ZEMyeVhpZWNuMDYxeUlPanVwTkJKaVhpWmd5WiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1788934143),
+('yrLe7t00mF3NbT2zqXN9L3I6m8GP5m4fQR0MaOVO', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiNjRSU0RLZU05a1NHeHZZcHdCTmFBZXoxZ1lzcmp2TERMelFDS1E2eSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9hamF4L3VuaXQtYWxhdC8xL2ZvcmtsaWZ0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1788857024);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `submissions`
+--
+
+CREATE TABLE `submissions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `unit_alat_id` bigint(20) UNSIGNED NOT NULL,
+  `pengawas_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `shift` enum('1','2','3') NOT NULL,
+  `operator_nd_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `operator_grup_a_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `operator_grup_b_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `operator_grup_c_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `operator_grup_d_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `zona_snapshot` varchar(255) DEFAULT NULL,
+  `area_kerja_snapshot` varchar(255) DEFAULT NULL,
+  `unit_kerja_snapshot` varchar(255) DEFAULT NULL,
+  `jenis_alat_snapshot` varchar(255) DEFAULT NULL,
+  `no_lambung_snapshot` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `submissions`
+--
+
+INSERT INTO `submissions` (`id`, `unit_alat_id`, `pengawas_id`, `shift`, `operator_nd_id`, `operator_grup_a_id`, `operator_grup_b_id`, `operator_grup_c_id`, `operator_grup_d_id`, `created_at`, `updated_at`, `zona_snapshot`, `area_kerja_snapshot`, `unit_kerja_snapshot`, `jenis_alat_snapshot`, `no_lambung_snapshot`) VALUES
+(1, 7, 16, '1', NULL, 22, 23, 24, 25, '2026-09-09 02:58:34', '2026-09-09 02:58:34', 'ZONA 1A', 'Gudang 1', 'Gd ZA', 'Forklift', '25-12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `submission_photos`
+--
+
+CREATE TABLE `submission_photos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `submission_id` bigint(20) UNSIGNED NOT NULL,
+  `path` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `submission_photos`
+--
+
+INSERT INTO `submission_photos` (`id`, `submission_id`, `path`, `created_at`, `updated_at`) VALUES
+(1, 1, 'foto-cuci-alat/gPTZ1Qsw6ZgfkdYsGZkZUrz1HuN8SU3cZYxbE9ja.jpg', '2026-09-09 02:58:35', '2026-09-09 02:58:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `unit_alats`
+--
+
+CREATE TABLE `unit_alats` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `unit_kerja_id` bigint(20) UNSIGNED NOT NULL,
+  `jenis_alat_id` bigint(20) UNSIGNED NOT NULL,
+  `no_lambung` varchar(255) NOT NULL,
+  `kepemilikan` varchar(255) DEFAULT NULL,
+  `keterangan` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `unit_alats`
+--
+
+INSERT INTO `unit_alats` (`id`, `unit_kerja_id`, `jenis_alat_id`, `no_lambung`, `kepemilikan`, `keterangan`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '57', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(2, 1, 1, '58', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(3, 1, 1, '59', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(4, 1, 1, '60', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(5, 2, 1, '61', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(6, 2, 1, '70', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(7, 2, 1, '25-12', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(8, 2, 1, '25-13', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(9, 2, 1, '25-14', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(10, 3, 1, '75', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(11, 3, 1, '87', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(12, 3, 1, '88', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(13, 3, 1, '89', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(14, 3, 1, '25-90', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(15, 3, 1, '25-91', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(16, 3, 1, '25-92', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(17, 3, 1, '25-93', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(18, 4, 1, '74', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(19, 5, 1, '25-94', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(20, 5, 1, '25-95', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(21, 5, 1, '25-96', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(22, 5, 1, '25-97', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(23, 5, 1, '25-98', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(24, 5, 1, '25-99', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(25, 6, 1, '25-01', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(26, 6, 1, '25-02', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(27, 6, 1, '25-03', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(28, 6, 1, '25-04', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(29, 6, 1, '25-05', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(30, 6, 1, '25-06', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(31, 6, 1, '25-07', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(32, 6, 1, '25-08', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(33, 7, 1, '53', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(34, 7, 1, '79', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(35, 7, 1, '25-09', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(36, 7, 1, '25-10', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(37, 8, 1, '50', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(38, 8, 1, '77', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(39, 9, 1, '78', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(40, 10, 1, '65', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(41, 11, 1, '64', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(42, 12, 1, '63', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(43, 13, 1, '25-11', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(44, 13, 1, '62', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(45, 14, 1, '71', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(46, 14, 1, '72', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(47, 14, 1, '73', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(48, 14, 1, '80', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(49, 14, 1, '81', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(50, 15, 1, '67', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(51, 15, 1, '82', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(52, 15, 1, '83', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(53, 15, 1, '84', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(54, 15, 1, '85', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(55, 16, 1, '25-15', 'K3PG', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(56, 16, 1, '25-16', 'K3PG', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(57, 16, 1, '68', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(58, 16, 1, '76', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(59, 16, 1, '86', 'YAYASAN', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(60, 17, 2, '46', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(61, 18, 2, '60', 'WKK', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(62, 19, 2, '49', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(63, 20, 2, '25-71', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(64, 21, 2, '25-75', 'BAA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(65, 22, 2, '67', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(66, 23, 2, '25-77', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(67, 23, 2, '43', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(68, 24, 2, '26-78', 'BAA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(69, 24, 2, '65', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(70, 25, 2, '47', 'WKK', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(71, 26, 2, '41', 'WKK', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(72, 27, 2, '25-74', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(73, 28, 2, '45', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(74, 29, 2, '25-76', 'BAA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(75, 29, 2, '50', 'BAA', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(76, 30, 2, '40', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(77, 31, 2, '25-72', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(78, 31, 2, '56', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(79, 32, 2, '25-73', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(80, 33, 2, '68', 'WKK', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(81, 34, 2, '55', 'WKK', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(82, 35, 2, '63', 'WKK', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(83, 36, 2, '64', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(84, 37, 2, '59', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(85, 37, 2, '54', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(86, 38, 2, '62', 'PCS', NULL, '2026-09-08 07:45:35', '2026-09-08 07:45:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `unit_kerjas`
+--
+
+CREATE TABLE `unit_kerjas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `area_kerja_id` bigint(20) UNSIGNED NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `unit_kerjas`
+--
+
+INSERT INTO `unit_kerjas` (`id`, `area_kerja_id`, `nama`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Gd. Urea', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(2, 1, 'Gd ZA', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(3, 2, 'Gudang PF 1/ G.D 2', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(4, 2, 'Bahan pembantu', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(5, 2, 'Gudang Phonska 1', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(6, 3, 'Gudang PF II/ G.D 3', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(7, 4, 'NPK II, III, IV', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(8, 4, 'NPK I & ZK I', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(9, 4, 'Bahan Pembantu', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(10, 5, 'ALF3', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(11, 5, 'Gudang IV', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(12, 5, 'Revamping', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(13, 5, 'Gudang 38', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(14, 6, 'Gudang Urea II', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(15, 7, 'GMG I', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(16, 7, 'GMG II', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(17, 8, 'Loading BB ZA Phn III O9-250 &', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(18, 8, 'Loading BB ZA ROP 02-250', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(19, 8, 'Loading BB  Urea / KCL 2 & 3', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(20, 8, 'Loading BB phn I', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(21, 8, 'Phonska 5/PF I', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(22, 8, 'Muat Curah 09-400', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(23, 8, 'Muat Curah 02-400', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(24, 4, 'Loading BB phn IV', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(25, 4, 'Loading NPK II/III/IV', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(26, 4, 'Muat Curah 22-400', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(27, 4, 'Loading NPK I', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(28, 4, 'Loading ZK I', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(29, 9, 'Loading Asam Fosfat I & II', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(30, 9, 'Loading Asam Sulfat I & II', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(31, 9, 'Loading Puri Gypsum I & II', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(32, 9, 'Loading Gudang CR', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(33, 10, 'Loading Urea', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(34, 10, 'Loading ZA/BS Belerang', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(35, 10, 'Loading Gypsum', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(36, 11, 'Loading Curah', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(37, 12, 'Ekspor Curah', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(38, 13, 'KCL BB', '2026-09-08 07:45:35', '2026-09-08 07:45:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `unit_operators`
+--
+
+CREATE TABLE `unit_operators` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `unit_alat_id` bigint(20) UNSIGNED NOT NULL,
+  `operator_id` bigint(20) UNSIGNED NOT NULL,
+  `grup` enum('A','B','C','D') NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `unit_operators`
+--
+
+INSERT INTO `unit_operators` (`id`, `unit_alat_id`, `operator_id`, `grup`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(2, 2, 2, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(3, 2, 3, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(4, 2, 4, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(5, 2, 5, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(6, 3, 6, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(7, 3, 7, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(8, 3, 8, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(9, 3, 9, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(10, 4, 10, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(11, 4, 11, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(12, 4, 12, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(13, 4, 13, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(14, 5, 14, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(15, 5, 15, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(16, 5, 16, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(17, 5, 17, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(18, 6, 18, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(19, 6, 19, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(20, 6, 20, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(21, 6, 21, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(22, 7, 22, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(23, 7, 23, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(24, 7, 24, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(25, 7, 25, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(26, 8, 26, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(27, 8, 27, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(28, 8, 28, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(29, 8, 29, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(30, 9, 30, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(31, 9, 31, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(32, 9, 32, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(33, 9, 33, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(34, 10, 34, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(35, 10, 35, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(36, 10, 36, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(37, 10, 37, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(38, 11, 38, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(39, 11, 39, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(40, 11, 40, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(41, 11, 41, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(42, 12, 42, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(43, 12, 43, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(44, 12, 44, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(45, 12, 45, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(46, 13, 46, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(47, 13, 47, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(48, 13, 48, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(49, 13, 49, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(50, 14, 50, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(51, 14, 51, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(52, 14, 52, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(53, 14, 53, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(54, 15, 54, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(55, 15, 55, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(56, 15, 56, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(57, 15, 57, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(58, 16, 58, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(59, 16, 59, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(60, 16, 60, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(61, 16, 61, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(62, 17, 62, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(63, 17, 63, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(64, 17, 64, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(65, 17, 65, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(66, 18, 66, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(67, 18, 67, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(68, 18, 68, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(69, 18, 69, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(70, 19, 70, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(71, 19, 71, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(72, 19, 72, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(73, 19, 73, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(74, 20, 74, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(75, 20, 75, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(76, 20, 76, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(77, 20, 77, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(78, 21, 78, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(79, 21, 79, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(80, 21, 80, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(81, 21, 81, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(82, 22, 82, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(83, 22, 83, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(84, 22, 84, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(85, 22, 85, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(86, 23, 86, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(87, 23, 87, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(88, 23, 88, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(89, 23, 89, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(90, 24, 90, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(91, 24, 91, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(92, 24, 92, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(93, 24, 93, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(94, 25, 94, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(95, 25, 95, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(96, 25, 96, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(97, 25, 97, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(98, 26, 98, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(99, 26, 99, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(100, 26, 100, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(101, 26, 101, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(102, 27, 102, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(103, 27, 103, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(104, 27, 104, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(105, 27, 105, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(106, 28, 106, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(107, 28, 107, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(108, 28, 108, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(109, 28, 109, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(110, 29, 110, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(111, 29, 111, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(112, 29, 112, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(113, 29, 113, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(114, 30, 114, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(115, 30, 115, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(116, 30, 116, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(117, 30, 117, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(118, 31, 118, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(119, 31, 119, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(120, 31, 120, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(121, 31, 121, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(122, 32, 122, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(123, 32, 123, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(124, 32, 124, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(125, 32, 125, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(126, 33, 126, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(127, 33, 127, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(128, 33, 128, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(129, 33, 129, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(130, 34, 130, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(131, 34, 131, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(132, 34, 132, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(133, 34, 133, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(134, 35, 134, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(135, 35, 135, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(136, 35, 136, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(137, 35, 137, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(138, 36, 138, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(139, 36, 139, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(140, 36, 140, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(141, 36, 141, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(142, 37, 142, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(143, 38, 143, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(144, 38, 144, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(145, 38, 145, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(146, 38, 146, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(147, 39, 147, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(148, 39, 135, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(149, 39, 148, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(150, 39, 149, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(151, 40, 150, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(152, 40, 151, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(153, 40, 71, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(154, 40, 152, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(155, 41, 153, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(156, 41, 154, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(157, 41, 155, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(158, 41, 156, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(159, 42, 157, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(160, 42, 158, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(161, 42, 159, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(162, 42, 160, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(163, 43, 161, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(164, 44, 162, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(165, 45, 163, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(166, 45, 164, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(167, 45, 165, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(168, 45, 18, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(169, 46, 166, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(170, 46, 167, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(171, 46, 168, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(172, 46, 169, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(173, 47, 170, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(174, 47, 18, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(175, 47, 171, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(176, 47, 172, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(177, 48, 173, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(178, 48, 174, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(179, 48, 175, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(180, 48, 176, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(181, 49, 177, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(182, 49, 178, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(183, 49, 179, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(184, 49, 180, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(185, 50, 151, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(186, 50, 181, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(187, 50, 182, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(188, 50, 183, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(189, 51, 184, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(190, 51, 185, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(191, 51, 186, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(192, 51, 187, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(193, 52, 151, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(194, 52, 181, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(195, 52, 188, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(196, 52, 189, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(197, 53, 190, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(198, 53, 191, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(199, 53, 192, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(200, 53, 193, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(201, 54, 194, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(202, 54, 195, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(203, 54, 196, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(204, 54, 80, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(205, 55, 197, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(206, 55, 198, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(207, 55, 199, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(208, 55, 200, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(209, 56, 201, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(210, 56, 185, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(211, 56, 199, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(212, 56, 202, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(213, 57, 203, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(214, 57, 204, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(215, 57, 205, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(216, 57, 187, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(217, 58, 197, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(218, 58, 206, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(219, 58, 186, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(220, 58, 207, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(221, 59, 208, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(222, 59, 198, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(223, 59, 182, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(224, 59, 183, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(225, 60, 209, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(226, 60, 210, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(227, 60, 211, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(228, 60, 212, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(229, 61, 213, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(230, 61, 214, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(231, 61, 215, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(232, 61, 216, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(233, 62, 217, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(234, 62, 218, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(235, 62, 219, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(236, 62, 220, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(237, 63, 221, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(238, 63, 222, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(239, 63, 223, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(240, 63, 224, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(241, 64, 225, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(242, 64, 226, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(243, 64, 227, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(244, 64, 228, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(245, 65, 229, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(246, 65, 230, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(247, 65, 231, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(248, 65, 232, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(249, 66, 233, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(250, 66, 234, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(251, 66, 215, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(252, 66, 235, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(253, 67, 236, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(254, 67, 237, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(255, 67, 227, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(256, 67, 26, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(257, 68, 238, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(258, 68, 239, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(259, 68, 240, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(260, 68, 241, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(261, 69, 242, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(262, 69, 243, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(263, 69, 244, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(264, 69, 245, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(265, 70, 246, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(266, 70, 247, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(267, 70, 248, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(268, 70, 249, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(269, 71, 250, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(270, 71, 251, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(271, 71, 252, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(272, 71, 253, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(273, 72, 254, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(274, 72, 255, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(275, 72, 256, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(276, 72, 257, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(277, 73, 258, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(278, 73, 259, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(279, 73, 256, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(280, 73, 257, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(281, 74, 260, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(282, 74, 261, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(283, 74, 262, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(284, 74, 263, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(285, 75, 264, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(286, 75, 265, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(287, 75, 266, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(288, 75, 267, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(289, 76, 268, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(290, 76, 269, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(291, 76, 270, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(292, 76, 271, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(293, 77, 272, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(294, 77, 273, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(295, 77, 274, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(296, 77, 275, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(297, 78, 276, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(298, 78, 277, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(299, 78, 278, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(300, 78, 156, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(301, 79, 279, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(302, 79, 280, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(303, 79, 281, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(304, 79, 282, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(305, 80, 179, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(306, 80, 283, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(307, 80, 284, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(308, 80, 285, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(309, 81, 286, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(310, 81, 287, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(311, 81, 288, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(312, 81, 289, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(313, 82, 290, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(314, 82, 291, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(315, 82, 292, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(316, 82, 293, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(317, 83, 294, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(318, 83, 18, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(319, 83, 295, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(320, 83, 296, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(321, 84, 297, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(322, 84, 298, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(323, 84, 299, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(324, 84, 300, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(325, 85, 301, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(326, 85, 302, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(327, 85, 303, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(328, 85, 304, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(329, 86, 305, 'A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(330, 86, 306, 'B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(331, 86, 307, 'C', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(332, 86, 308, 'D', '2026-09-08 07:45:35', '2026-09-08 07:45:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL DEFAULT 'admin',
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `role`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Administrator', 'admin@cucialber.local', 'admin', NULL, '$2y$12$wXrsPvSydmciYw31uYg4JOW/UTApI31Wy2kyKi8LR2S8ycBly2CJe', NULL, '2026-09-08 07:45:35', '2026-09-08 07:47:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `zonas`
+--
+
+CREATE TABLE `zonas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `zonas`
+--
+
+INSERT INTO `zonas` (`id`, `nama`, `created_at`, `updated_at`) VALUES
+(1, 'ZONA 1A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(2, 'ZONA 2A', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(3, 'ZONA 2B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(4, 'ZONA 3', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(5, 'ZONA 1B', '2026-09-08 07:45:35', '2026-09-08 07:45:35'),
+(6, 'ZONA 3 A/B', '2026-09-08 07:45:35', '2026-09-08 07:45:35');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `area_kerjas`
+--
+ALTER TABLE `area_kerjas`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `area_kerjas_zona_id_nama_unique` (`zona_id`,`nama`);
+
+--
+-- Indexes for table `cache`
+--
+ALTER TABLE `cache`
+  ADD PRIMARY KEY (`key`);
+
+--
+-- Indexes for table `cache_locks`
+--
+ALTER TABLE `cache_locks`
+  ADD PRIMARY KEY (`key`);
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `jenis_alats`
+--
+ALTER TABLE `jenis_alats`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `jenis_alats_nama_unique` (`nama`);
+
+--
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jobs_queue_index` (`queue`);
+
+--
+-- Indexes for table `job_batches`
+--
+ALTER TABLE `job_batches`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `operators`
+--
+ALTER TABLE `operators`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_reset_tokens`
+--
+ALTER TABLE `password_reset_tokens`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indexes for table `pengawas`
+--
+ALTER TABLE `pengawas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sessions_user_id_index` (`user_id`),
+  ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
+-- Indexes for table `submissions`
+--
+ALTER TABLE `submissions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `submissions_unit_alat_id_foreign` (`unit_alat_id`),
+  ADD KEY `submissions_pengawas_id_foreign` (`pengawas_id`),
+  ADD KEY `submissions_operator_nd_id_foreign` (`operator_nd_id`),
+  ADD KEY `submissions_operator_grup_a_id_foreign` (`operator_grup_a_id`),
+  ADD KEY `submissions_operator_grup_b_id_foreign` (`operator_grup_b_id`),
+  ADD KEY `submissions_operator_grup_c_id_foreign` (`operator_grup_c_id`),
+  ADD KEY `submissions_operator_grup_d_id_foreign` (`operator_grup_d_id`);
+
+--
+-- Indexes for table `submission_photos`
+--
+ALTER TABLE `submission_photos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `submission_photos_submission_id_foreign` (`submission_id`);
+
+--
+-- Indexes for table `unit_alats`
+--
+ALTER TABLE `unit_alats`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `unit_alats_unit_kerja_id_jenis_alat_id_index` (`unit_kerja_id`,`jenis_alat_id`),
+  ADD KEY `unit_alats_jenis_alat_id_foreign` (`jenis_alat_id`);
+
+--
+-- Indexes for table `unit_kerjas`
+--
+ALTER TABLE `unit_kerjas`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unit_kerjas_area_kerja_id_nama_unique` (`area_kerja_id`,`nama`);
+
+--
+-- Indexes for table `unit_operators`
+--
+ALTER TABLE `unit_operators`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unit_operators_unit_alat_id_grup_unique` (`unit_alat_id`,`grup`),
+  ADD KEY `unit_operators_operator_id_foreign` (`operator_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indexes for table `zonas`
+--
+ALTER TABLE `zonas`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `zonas_nama_unique` (`nama`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `area_kerjas`
+--
+ALTER TABLE `area_kerjas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `jenis_alats`
+--
+ALTER TABLE `jenis_alats`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `jobs`
+--
+ALTER TABLE `jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `operators`
+--
+ALTER TABLE `operators`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=309;
+
+--
+-- AUTO_INCREMENT for table `pengawas`
+--
+ALTER TABLE `pengawas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `submissions`
+--
+ALTER TABLE `submissions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `submission_photos`
+--
+ALTER TABLE `submission_photos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `unit_alats`
+--
+ALTER TABLE `unit_alats`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+
+--
+-- AUTO_INCREMENT for table `unit_kerjas`
+--
+ALTER TABLE `unit_kerjas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `unit_operators`
+--
+ALTER TABLE `unit_operators`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=333;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `zonas`
+--
+ALTER TABLE `zonas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `area_kerjas`
+--
+ALTER TABLE `area_kerjas`
+  ADD CONSTRAINT `area_kerjas_zona_id_foreign` FOREIGN KEY (`zona_id`) REFERENCES `zonas` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `submissions`
+--
+ALTER TABLE `submissions`
+  ADD CONSTRAINT `submissions_operator_grup_a_id_foreign` FOREIGN KEY (`operator_grup_a_id`) REFERENCES `operators` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `submissions_operator_grup_b_id_foreign` FOREIGN KEY (`operator_grup_b_id`) REFERENCES `operators` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `submissions_operator_grup_c_id_foreign` FOREIGN KEY (`operator_grup_c_id`) REFERENCES `operators` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `submissions_operator_grup_d_id_foreign` FOREIGN KEY (`operator_grup_d_id`) REFERENCES `operators` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `submissions_operator_nd_id_foreign` FOREIGN KEY (`operator_nd_id`) REFERENCES `operators` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `submissions_pengawas_id_foreign` FOREIGN KEY (`pengawas_id`) REFERENCES `pengawas` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `submissions_unit_alat_id_foreign` FOREIGN KEY (`unit_alat_id`) REFERENCES `unit_alats` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `submission_photos`
+--
+ALTER TABLE `submission_photos`
+  ADD CONSTRAINT `submission_photos_submission_id_foreign` FOREIGN KEY (`submission_id`) REFERENCES `submissions` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `unit_alats`
+--
+ALTER TABLE `unit_alats`
+  ADD CONSTRAINT `unit_alats_jenis_alat_id_foreign` FOREIGN KEY (`jenis_alat_id`) REFERENCES `jenis_alats` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `unit_alats_unit_kerja_id_foreign` FOREIGN KEY (`unit_kerja_id`) REFERENCES `unit_kerjas` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `unit_kerjas`
+--
+ALTER TABLE `unit_kerjas`
+  ADD CONSTRAINT `unit_kerjas_area_kerja_id_foreign` FOREIGN KEY (`area_kerja_id`) REFERENCES `area_kerjas` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `unit_operators`
+--
+ALTER TABLE `unit_operators`
+  ADD CONSTRAINT `unit_operators_operator_id_foreign` FOREIGN KEY (`operator_id`) REFERENCES `operators` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `unit_operators_unit_alat_id_foreign` FOREIGN KEY (`unit_alat_id`) REFERENCES `unit_alats` (`id`) ON DELETE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
